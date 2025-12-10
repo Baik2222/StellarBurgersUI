@@ -28,6 +28,10 @@ class BasePage:
     def open_order_feed_page(self):
         self.open_url(MainUrl.ORDER_FEED_PAGE_URL)
 
+    @allure.step("Ожидание условия")
+    def wait_until(self, func, timeout=45):
+        return WebDriverWait(self.driver, timeout).until(func)
+
     @allure.step("Ожидать появление '{locator}'")
     def wait_for_element(self, locator):
         return self.wait.until(EC.visibility_of_element_located(locator))

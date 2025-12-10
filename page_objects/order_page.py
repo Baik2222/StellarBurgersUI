@@ -1,7 +1,5 @@
 import allure
 
-from selenium.webdriver.support.wait import WebDriverWait
-
 from locators.base import LOADER_MODAL
 from locators.main import CONSTRUCTOR_BASKET, INGREDIENT_ITEM
 from locators.order import (
@@ -39,12 +37,11 @@ class OrderFeedPage(BasePage):
         ]
 
     def wait_for_real_order_number(self, timeout=20):
-        def is_real_order_number(driver):
-            elem = driver.find_element(*ORDER_NUMBER_IN_MODAL_TEXT)
-            text = elem.text.strip()
+        def is_real_order_number(_):
+            text = self.find(ORDER_NUMBER_IN_MODAL_TEXT).text.strip()
             return text.isdigit() and text != "9999"
 
-        WebDriverWait(self.driver, timeout).until(is_real_order_number)
+        self.wait_until(is_real_order_number, timeout)
 
         return self.find(ORDER_NUMBER_IN_MODAL_TEXT).text.strip().zfill(7)
 
