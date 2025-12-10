@@ -17,7 +17,7 @@
 pip install -r requirements.txt
 ```
 
-2. Установить `Google Chrome` и/или `Mozilla Firefox`.
+2. Установить `Google Chrome` и `Mozilla Firefox`.
 
 ---
 
@@ -27,13 +27,6 @@ pip install -r requirements.txt
 
 ```
 pytest -v
-```
-
-Для запуска в определённом браузере (Chrome по умолчанию):
-
-```
-pytest -v --browser chrome
-pytest -v --browser firefox
 ```
 
 ---
